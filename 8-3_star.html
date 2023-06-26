@@ -36,19 +36,21 @@
         const controls = new THREE.OrbitControls(camera, renderer.domElement); 
         
         // 平面を作成
-        var planeGeometry = new THREE.PlaneGeometry(5, 5, 10, 10); //縦、横、分割数、分割数
+        var planeGeometry = new THREE.PlaneGeometry(3, 3, 10, 10); //縦、横、分割数、分割数
         var planeMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
         var plane = new THREE.Mesh(planeGeometry, planeMaterial);
         plane.rotation.set(-Math.PI/2, 0, 0);
-        plane.position.set(0, 0, 0);
+        plane.position.set(0, 2, 0);
         scene.add(plane);
         
         // 箱を作成
-        var geometry = new THREE.BoxGeometry(1, 1, 1);
-        var material_box = new THREE.MeshPhongMaterial({ color: 0x0000ff });
+        var geometry = new THREE.BoxBufferGeometry(1, 1, 1);
+        var textureLoader = new THREE.TextureLoader();
+        var texture = textureLoader.load("hatena.png");
+        var material_box = new THREE.MeshStandardMaterial({ map: texture });
         var box = new THREE.Mesh(geometry, material_box);
         box.position.set(0, 0, 0); //位置を指定
-        scene.add(box);   // シーンに追加
+        scene.add(box);
         
         // 平行光源1
         var directionalLight1 = new THREE.DirectionalLight(0xffffff);
