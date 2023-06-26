@@ -40,16 +40,16 @@
         var planeMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
         var plane = new THREE.Mesh(planeGeometry, planeMaterial);
         plane.rotation.set(-Math.PI/2, 0, 0);
-        plane.position.set(0, 0, 0);
+        plane.position.set(0, -1, 0);
         scene.add(plane);
         
         // 箱を作成
-        var geometry = new THREE.BoxBufferGeometry(1, 1, 1);
+        var geometry = new THREE.BoxBufferGeometry(0.7, 0.7, 0.7);
         var textureLoader = new THREE.TextureLoader();
         var texture = textureLoader.load("hatena.png");
         var material_box = new THREE.MeshStandardMaterial({ map: texture });
         var box = new THREE.Mesh(geometry, material_box);
-        box.position.set(0, 0, 0); //位置を指定
+        box.position.set(0, 1, 0); //位置を指定
         scene.add(box);
         
         // 平行光源1
